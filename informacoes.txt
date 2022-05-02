@@ -1,0 +1,14 @@
+confirmação implicita no sistema.
+dar informação a pessoa para ela saber o que é para fazer.
+slots - pode adotar
+não pode ser a pessoa a culpada.
+definir um threshold - 4 tiered level of confidence. no input da pessoa - importante - slide
+35 IM - dialog systems.
+como é que é o diagrama da aplicação. quais frases do sistema e do utilizador. 
+ir aos slides para resolver problemas.
+Perguntas que o sistema nao vai entender.
+Fazer um diagrama.
+só usar voz.
+ter a ideia de que está a reconhecer.
+ter help.
+ler livro - designing voice user interfaces - O'Reilly, 2017.

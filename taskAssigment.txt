@@ -1,0 +1,33 @@
+- Abrir ficheiro example.mp3 no minuto 00:01:50;
+- Pause/Resume example.mp3
+- Abrir pasta music_folder
+- Avançar música para o tempo x
+- Aumentar/Diminuir volume 
+- Por volume a 20% do vlc
+- Abrir/Criar/Editar/Eliminar playlist
+- Shuffle/Repeat musica na playlist
+- Mute/Unmute music
+- Guardar lista na pasta x
+- Meter/Sair fullscream 
+
+------------------------------ Comentários Professor --------------------------------
+- como o sistema apenas vai reconhecer palavras que estejam na gramática têm de pensar
+em alternativas ao “Abrir ficheiro NOME”. Talvez possam pensar em ter uma lista 
+e o utilizador dizer “primeiro”; “segundo”, último… décimo…
+
+- “Abrir ficheiro” não é nada natural ….  Deviam ser coisas como quero ver XX a partir
+ de xxx
+
+- a parte de dizer minutos e segundos vai dar trabalho em termos de gramática mas é uma
+ ideia que devem manter
+
+- têm de pensar  numa nova forma de usar o VLC e não apenas replicar a forma
+ como este é usado com teclado e rato…
+Exemplos:  podem dizer “Estou a ouvir mal “ em vez de aumentar o volume
+Podem “não me apetece ouvir mais esta música”; “podes passar para a próxima [por favor]…
+“silêncio por favor” em vez de “mute
+
+- coisas como guardar na pasta x   são complicadas devido a só poderem usar palavras da gramática
+
+- sugiro que adicionem consulta a informação (ex: qual a duração do filme?
+
