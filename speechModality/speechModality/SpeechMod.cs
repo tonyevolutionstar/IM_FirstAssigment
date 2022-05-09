@@ -9,6 +9,7 @@ using System.Xml.Linq;
 using Newtonsoft.Json;
 using System.Windows.Shapes;
 using System.Windows.Media;
+using System.IO;
 //using Newtonsoft.Json;
 
 namespace speechModality
@@ -36,9 +37,7 @@ namespace speechModality
         //  NEW 16 april
         private static Tts tts = new Tts(sre);
         private MmiCommunication mmiReceiver;
-        private Shape rectangle;
-        private Shape circle;
-        private readonly Shape triangle;
+    
 
         public SpeechMod()
         {
@@ -53,7 +52,7 @@ namespace speechModality
             //sre = new SpeechRecognitionEngine(new System.Globalization.CultureInfo("pt-PT"));
             gr = new Grammar(Environment.CurrentDirectory + "\\ptG.grxml", "rootRule");
             sre.LoadGrammar(gr);
-
+            //file_dir();
 
             sre.SetInputToDefaultAudioDevice();
             sre.RecognizeAsync(RecognizeMode.Multiple);
@@ -61,19 +60,16 @@ namespace speechModality
             sre.SpeechHypothesized += Sre_SpeechHypothesized;
 
             // NEW - TTS support 16 April
-            tts.Speak("Olá. Estou pronto para receber ordens.");
+            tts.Speak("Olá sou o Cone, o teu ajudante musical. Estou pronto para receber ordens.");
 
 
             //  o TTS  no final indica que se recebe mensagens enviadas para TTS
-        mmiReceiver = new MmiCommunication("localhost",8000, "User1", "TTS");
-        mmiReceiver.Message += MmiReceived_Message;
-        mmiReceiver.Start();
-
-
+            mmiReceiver = new MmiCommunication("localhost",8000, "User1", "TTS");
+            mmiReceiver.Message += MmiReceived_Message;
+            mmiReceiver.Start();
         }
 
-
-    private void Sre_SpeechHypothesized(object sender, SpeechHypothesizedEventArgs e)
+        private void Sre_SpeechHypothesized(object sender, SpeechHypothesizedEventArgs e)
         {
             onRecognized(new SpeechEventArg() { Text = e.Result.Text, Confidence = e.Result.Confidence, Final = false });
         }
@@ -102,10 +98,6 @@ namespace speechModality
         //  Adapted from AppGUI code
 
 
-
-
-
-
         //MmiReceived_Message;
 
         private void MmiReceived_Message(object sender, MmiEventArgs e)
@@ -117,43 +109,33 @@ namespace speechModality
 
             Console.WriteLine(com);
 
-
             tts.Speak(com);
-            /*
-            dynamic json = JsonConvert.DeserializeObject(com);
+        }
 
-            Shape _s = null;
-            switch ((string)json.recognized[0].ToString())
+        private void file_dir()
+        {
+            string dir_music = @"C:\Users\tonya\OneDrive\Ambiente de Trabalho\mestrado\IM\IM_FirstAssigment\music";
+
+            string[] files = Directory.GetFiles(dir_music);
+            foreach (string file in files)
+                Console.WriteLine(System.IO.Path.GetFileName(file));
+
+            System.IO.StreamWriter TestWriter = new System.IO.StreamWriter("test1.grxml");
+
+            TestWriter.Write("<?xml version=\"1.0\" encoding=\"utf - 8\"?><grammar mode=\"voice\" version=\"1.0\" root=\"main\"><rule id=\"main\"><one-of>");
+
+            foreach (string file in files)
             {
-                case "SQUARE":
-                    _s = rectangle;
-                    break;
-                case "CIRCLE":
-                    _s = circle;
-                    break;
-                case "TRIANGLE":
-                    _s = triangle;
-                    break;
+                string name = System.IO.Path.GetFileName(file).ToString();
+                string musician = name.Split('-')[0];
+
+                string music = name.Split('-')[1].Split('.')[0];
+                Console.WriteLine(musician + " " + music);
+                TestWriter.Write("<item>{0}<tag>out={1}</tag></item>", musician + " " + music, musician + " " + music);
             }
 
-            App.Current.Dispatcher.Invoke(() =>
-            {
-                switch ((string)json.recognized[1].ToString())
-                {
-                    case "GREEN":
-                        _s.Fill = Brushes.Green;
-                        break;
-                    case "BLUE":
-                        _s.Fill = Brushes.Blue;
-                        break;
-                    case "RED":
-                        _s.Fill = Brushes.Red;
-                        break;
-                }
-            });
-            
-            */
-
+            TestWriter.Write("</one-of></rule></grammar>");
+            TestWriter.Close();
         }
     }
 }

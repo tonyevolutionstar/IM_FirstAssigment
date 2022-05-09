@@ -9,5 +9,6 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("ptg.grxml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("ptgwork.grxml")]
 
 

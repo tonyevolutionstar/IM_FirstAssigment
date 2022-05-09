@@ -2,3 +2,6 @@ im primeiro
 java -jar mmiframeworkV2.jar
 depois speechModality
 depois AppGui
+
+cmd Entidade parametro
+- play vlc musica x.mp3

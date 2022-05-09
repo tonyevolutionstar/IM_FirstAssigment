@@ -133,3 +133,13 @@ C:\Users\tonya\OneDrive\Ambiente de Trabalho\mestrado\IM\IM_FirstAssigment\AppGu
 C:\Users\tonya\OneDrive\Ambiente de Trabalho\mestrado\IM\IM_FirstAssigment\AppGui\AppGui\obj\Debug\AppGui.csproj.CopyComplete
 C:\Users\tonya\OneDrive\Ambiente de Trabalho\mestrado\IM\IM_FirstAssigment\AppGui\AppGui\obj\Debug\AppGui.exe
 C:\Users\tonya\OneDrive\Ambiente de Trabalho\mestrado\IM\IM_FirstAssigment\AppGui\AppGui\obj\Debug\AppGui.pdb
+C:\Users\tonya\OneDrive\Ambiente de Trabalho\mestrado\IM\IM_FirstAssigment\AppGui\AppGui\bin\Debug\LibVLCSharp.dll
+C:\Users\tonya\OneDrive\Ambiente de Trabalho\mestrado\IM\IM_FirstAssigment\AppGui\AppGui\bin\Debug\Microsoft.Threading.Tasks.dll
+C:\Users\tonya\OneDrive\Ambiente de Trabalho\mestrado\IM\IM_FirstAssigment\AppGui\AppGui\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\Users\tonya\OneDrive\Ambiente de Trabalho\mestrado\IM\IM_FirstAssigment\AppGui\AppGui\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll
+C:\Users\tonya\OneDrive\Ambiente de Trabalho\mestrado\IM\IM_FirstAssigment\AppGui\AppGui\bin\Debug\System.ValueTuple.dll
+C:\Users\tonya\OneDrive\Ambiente de Trabalho\mestrado\IM\IM_FirstAssigment\AppGui\AppGui\bin\Debug\LibVLCSharp.xml
+C:\Users\tonya\OneDrive\Ambiente de Trabalho\mestrado\IM\IM_FirstAssigment\AppGui\AppGui\bin\Debug\Microsoft.Threading.Tasks.xml
+C:\Users\tonya\OneDrive\Ambiente de Trabalho\mestrado\IM\IM_FirstAssigment\AppGui\AppGui\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
+C:\Users\tonya\OneDrive\Ambiente de Trabalho\mestrado\IM\IM_FirstAssigment\AppGui\AppGui\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+C:\Users\tonya\OneDrive\Ambiente de Trabalho\mestrado\IM\IM_FirstAssigment\AppGui\AppGui\bin\Debug\System.ValueTuple.xml

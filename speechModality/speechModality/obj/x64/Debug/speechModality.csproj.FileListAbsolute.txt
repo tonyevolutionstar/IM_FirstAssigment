@@ -66,3 +66,4 @@ C:\Users\tonya\OneDrive\Ambiente de Trabalho\mestrado\IM\IM_FirstAssigment\speec
 C:\Users\tonya\OneDrive\Ambiente de Trabalho\mestrado\IM\IM_FirstAssigment\speechModality\speechModality\obj\x64\Debug\speechModality.csproj.CopyComplete
 C:\Users\tonya\OneDrive\Ambiente de Trabalho\mestrado\IM\IM_FirstAssigment\speechModality\speechModality\obj\x64\Debug\speechModality.exe
 C:\Users\tonya\OneDrive\Ambiente de Trabalho\mestrado\IM\IM_FirstAssigment\speechModality\speechModality\obj\x64\Debug\speechModality.pdb
+C:\Users\tonya\OneDrive\Ambiente de Trabalho\mestrado\IM\IM_FirstAssigment\speechModality\speechModality\bin\x64\Debug\ptGWork.grxml
