@@ -52,7 +52,6 @@ namespace speechModality
             //sre = new SpeechRecognitionEngine(new System.Globalization.CultureInfo("pt-PT"));
             gr = new Grammar(Environment.CurrentDirectory + "\\ptG.grxml", "rootRule");
             sre.LoadGrammar(gr);
-            //file_dir();
 
             sre.SetInputToDefaultAudioDevice();
             sre.RecognizeAsync(RecognizeMode.Multiple);
@@ -60,7 +59,7 @@ namespace speechModality
             sre.SpeechHypothesized += Sre_SpeechHypothesized;
 
             // NEW - TTS support 16 April
-            tts.Speak("Olá sou o Cone, o teu ajudante musical. Estou pronto para receber ordens.");
+            tts.Speak("Olá sou o Cone, o teu ajudante musical. Estou pronto para receber ordens. Para começar diz Cone,apetece-me ouvir esta música x");
 
 
             //  o TTS  no final indica que se recebe mensagens enviadas para TTS
@@ -90,7 +89,11 @@ namespace speechModality
             json += "] }";
 
             var exNot = lce.ExtensionNotification(e.Result.Audio.StartTime + "", e.Result.Audio.StartTime.Add(e.Result.Audio.Duration) + "", e.Result.Confidence, json);
-            mmic.Send(exNot);
+
+            if (e.Result.Confidence > 0.5)
+                mmic.Send(exNot);
+            else
+                tts.Speak("Desculpe não percebi, pode voltar repetir doutra forma, obrigado.");
         }
 
 

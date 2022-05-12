@@ -1,6 +1,4 @@
-﻿
-
-using mmisharp;
+﻿using mmisharp;
 using Newtonsoft.Json;
 using System;
 using System.IO;
@@ -11,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Xml.Linq;
+
 
 namespace AppGui
 {
@@ -70,12 +69,8 @@ namespace AppGui
             InitializeComponent();
             //início da comunicação com o VLC
 
-            IPEndPoint socketAddress = new IPEndPoint(IPAddress.Parse("192.168.41.230"), 54165);
-            //  var vlcServerProcess = System.Diagnostics.Process.Start(@"C:\Program Files (x86)\VideoLAN\VLC\vlc.exe", "-I rc --rc-host " + socketAddress.ToString());
-            // var vlcServerProcess = System.Diagnostics.Process.Start(@"C:\Program Files\VideoLAN\VLC\vlc.exe", "-I rc --rc-host " + socketAddress.ToString());
+            IPEndPoint socketAddress = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 62300);
             var vlcServerProcess = System.Diagnostics.Process.Start(@"C:\Program Files (x86)\VideoLAN\VLC\vlc.exe", "-I rc --rc-host " + socketAddress.ToString());
-
-            //"C:\Program Files\VideoLAN\VLC\vlc.exe"
 
             try
             {
@@ -85,13 +80,12 @@ namespace AppGui
                 Task listener = System.Threading.Tasks.Task.Factory.StartNew(() => Receive(vlcRcSocket));
 
                 Console.WriteLine("Connected. Enter VLC commands.");
-                //Send(vlcRcSocket, "enqueue file:///C:/Users/asus/Desktop/playlist.xspf");
-                Send(vlcRcSocket, "enqueue file:///C:/Users/tonya/Music/Linkin Park - Numb.mp3");
-
+                //Send(vlcRcSocket, "enqueue file:///C:/Users/tonya/Music/Linkin Park - Numb.mp3");
+                Send(vlcRcSocket, "enqueue file:///C:/Users/tonya/OneDrive/Ambiente de Trabalho/mestrado/IM/IM_FirstAssigment/AppGui/Testplaylist.xspf");
             }
             finally
             {
-                //   vlcServerProcess.Kill();
+                //vlcServerProcess.Kill();
             }
 
             mmiC = new MmiCommunication("localhost", 8000, "User1", "GUI");
@@ -103,16 +97,13 @@ namespace AppGui
             lce = new LifeCycleEvents("APP", "TTS", "User1", "na", "command"); // LifeCycleEvents(string source, string target, string id, string medium, string mode
             // MmiCommunication(string IMhost, int portIM, string UserOD, string thisModalityName)
             mmic = new MmiCommunication("localhost", 8000, "User1", "GUI");
-            Send_Tts("Olá. Espero que esteja tudo bem contigo. Estou pronta para receber ordens. Após iniciares o filme, poderás colocá-lo em pausa, alterar o volume e a sua velocidade. Se gostares muito de algum vídeo em especial, é só dizeres que queres repetir. Mas, se não gostares, podes também colocar o vídeo seguinte.");
         }
 
         private void Send_Tts(string send)
         {
             mmic.Send(lce.NewContextRequest());
-
             var exNot = lce.ExtensionNotification(0 + "", 0 + "", 1, send);
             mmic.Send(exNot);
-
         }
 
         int n = 0;
@@ -122,28 +113,28 @@ namespace AppGui
             var doc = XDocument.Parse(e.Message);
             var com = doc.Descendants("command").FirstOrDefault().Value;
             dynamic json = JsonConvert.DeserializeObject(com);
+            string e_message_music = "Primeiro tens de abrir a música.";
 
             App.Current.Dispatcher.Invoke(() =>
             {
                 switch ((string)json.recognized[0].ToString())
                 {
                     case "PLAY":
-                        Send_Tts("O filme vai começar. Boa sessão.");
+                        Send_Tts("A música vai começar. Bom aproveito");
                         Task.Delay(20000);
-                        Send(vlcRcSocket, "play");
+                        Send(vlcRcSocket, "play volume 50.0");
                         n = 1;
                         break;
                     case "PAUSE":
                         if (n == 0)
                         {
-                            Send_Tts("Primeiro tens que iniciar o filme.");
+                            Send_Tts(e_message_music);
                         }
                         else
                         {
-
                             if (n % 2 == 0 && n != 0)
                             {
-                                Send_Tts("O filme vai continuar.");
+                                Send_Tts("A música vai continuar.");
                                 Task.Delay(15000);
                                 Send(vlcRcSocket, "pause");
                                 ++n;
@@ -151,128 +142,184 @@ namespace AppGui
                             else
                             {
                                 Send(vlcRcSocket, "pause");
-                                Send_Tts("O filme está parado. Quando quiseres, diz para continuar.");
+                                Send_Tts("A música está parada. Quando quiseres, diz Cone,continua.");
                                 ++n;
                             }
+                        }
+                        break;
+                    case "RESUME":
+                        if (n == 0)
+                        {
+                            Send_Tts(e_message_music);
+                        }
+                        else
+                        {
+                            Send(vlcRcSocket, "play");
+                            Send_Tts("A música recomeçou");
                         }
                         break;
                     case "NEXT":
                         if (n == 0)
                         {
-                            Send_Tts("Primeiro tens que iniciar o filme.");
+                            Send_Tts(e_message_music);
                         }
                         else
                         {
                             Send(vlcRcSocket, "next");
+                            Send_Tts("Passei a música para seguinte");
                         }
                         break;
                     case "PREV":
                         if (n == 0)
                         {
-                            Send_Tts("Primeiro tens que iniciar o filme.");
+                            Send_Tts(e_message_music);
                         }
                         else
                         {
                             Send(vlcRcSocket, "prev");
+                            Send_Tts("Passei a música para anterior");
                         }
                         break;
                     case "VOLUP":
                         if (n == 0)
                         {
-                            Send_Tts("Primeiro tens que iniciar o filme.");
+                            Send_Tts(e_message_music);
                         }
                         else
-                        {
-                            Send(vlcRcSocket, "volup 10");
+                        {                 
+                            Send(vlcRcSocket, "volup 10.0");
+                            Send_Tts("Aumentei o volume");
                         }
                         break;
                     case "VOLDOWN":
                         if (n == 0)
                         {
-                            Send_Tts("Primeiro tens que iniciar o filme.");
+                            Send_Tts(e_message_music);
                         }
                         else
                         {
-                            Send(vlcRcSocket, "voldown 10");
-                        }
-                        break;
-                    case "FON":
-                        if (n == 0)
-                        {
-                            Send_Tts("Primeiro tens que iniciar o filme.");
-                        }
-                        else
-                        {
-                            Send(vlcRcSocket, "f [on]");
+                            Send(vlcRcSocket, "voldown 10.0");
+                            Send_Tts("Diminui o volume");
                         }
                         break;
                     case "FAST":
                         if (n == 0)
                         {
-                            Send_Tts("Primeiro tens que iniciar o filme.");
+                            Send_Tts(e_message_music);
                         }
                         else
                         {
                             Send(vlcRcSocket, "faster");
+                            Send_Tts("Estou a tocar a música mais rápido");
                         }
                         break;
                     case "SLOW":
                         if (n == 0)
                         {
-                            Send_Tts("Primeiro tens que iniciar o filme.");
+                            Send_Tts(e_message_music);
                         }
                         else
                         {
                             Send(vlcRcSocket, "slower");
+                            Send_Tts("Estou a tocar a música mais lento");
                         }
                         break;
                     case "VNORMAL":
                         if (n == 0)
                         {
-                            Send_Tts("Primeiro tens que iniciar o filme.");
+                            Send_Tts(e_message_music);
                         }
                         else
                         {
                             Send(vlcRcSocket, "normal");
+                            Send_Tts("Estou a tocar a música na velocidade normal");
                         }
                         break;
                     case "REPEATON":
                         if (n == 0)
                         {
-                            Send_Tts("Primeiro tens que iniciar o filme.");
+                            Send_Tts(e_message_music);
                         }
                         else
                         {
-                            Send(vlcRcSocket, "repeat [on]");
-                            Send_Tts("O filme está em repetição");
+                            Send(vlcRcSocket, "repeat on");
+                            Send_Tts("A música que está a tocar vai estar tocar outra vez. Para cancelar diz Cone,já não quero voltar a ouvir esta música de novo ");
                         }
 
                         break;
                     case "REPEATOFF":
                         if (n == 0)
                         {
-                            Send_Tts("Primeiro tens que iniciar o filme.");
+                            Send_Tts(e_message_music);
                         }
                         else
                         {
-                            Send(vlcRcSocket, "repeat [off]");
-                            Send_Tts("A repetição do filme está desativada");
+                            Send(vlcRcSocket, "repeat off");
+                            Send_Tts("Desativei o modo de repetição para esta música");
                         }
                         break;
-                    case "LOOP":
+                    case "LOOP": //implement
                         if (n == 0)
                         {
-                            Send_Tts("Primeiro tens que iniciar o filme.");
+                            Send_Tts(e_message_music);
                         }
                         else
                         {
-                            Send(vlcRcSocket, "loop [on]");
-                            Send_Tts("A repetição contínua dos filmes foi ativada");
+                            Send(vlcRcSocket, "loop on");
+                            Send_Tts("A repetição contínua das músicas foi ativada. Para cancealar diz Cone,podes desativar a repetição continua.");
+                        }
+                        break;
+
+                    case "MUTE":
+                        if (n == 0)
+                        {
+                            Send_Tts(e_message_music);
+                        }
+                        else
+                        {
+                            Send(vlcRcSocket, "volume 0");
+                            Send_Tts("A música está em silêncio se quiseres retormar diz Cone,podes retornar o som");
+                        }
+                        break;
+                    case "SPEAK":
+                        if (n == 0)
+                        {
+                            Send_Tts(e_message_music);
+                        }
+                        else
+                        {
+                            Send(vlcRcSocket, "volume 10.0");
+                            Send_Tts("A música agora está com volume de 50%");
+                        }
+            
+                        break;
+                    case "RANDOM":
+                        if (n == 0)
+                        {
+                            Send_Tts(e_message_music);
+                        }
+                        else
+                        {
+                            Send(vlcRcSocket, "random on");
+                            Send_Tts("A playlist vai ser tocada aleatória. Para cancelar diz Cone,podes cancelar músicas aletórias");
+                        }
+                        break;
+                    case "RANDOMOFF":
+                        if (n == 0)
+                        {
+                            Send_Tts(e_message_music);
+                        }
+                        else
+                        {
+                            Send(vlcRcSocket, "random off");
+                            Send_Tts("A playlist deixou de ser tocada aleatóriamente");
                         }
                         break;
                     case "QUIT":
                         Send(vlcRcSocket, "quit");
-                        Send_Tts("Espero que tenhas gostado do filme. Até à próxima");
+                        Send(vlcRcSocket, "logout");
+                        Send_Tts("Espero que tenhas gostado de ouvir a música. Até à próxima");
+                        vlcRcSocket.Close();
                         break;
                 }
             });
@@ -283,15 +330,7 @@ namespace AppGui
             string json2 = ""; // "{ \"synthesize\": [";
             json2 += (string)json.recognized[0].ToString() + " ";
             json2 += (string)json.recognized[1].ToString() + " DONE.";
-            //json2 += "] }";
-            /*
-             foreach (var resultSemantic in e.Result.Semantics)
-            {
-                json += "\"" + resultSemantic.Value.Value + "\", ";
-            }
-            json = json.Substring(0, json.Length - 2);
-            json += "] }";
-            */
+       
             var exNot = lce.ExtensionNotification(0 + "", 0 + "", 1, json2);
             mmic.Send(exNot);
         }
