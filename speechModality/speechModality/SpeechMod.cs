@@ -90,7 +90,10 @@ namespace speechModality
 
             var exNot = lce.ExtensionNotification(e.Result.Audio.StartTime + "", e.Result.Audio.StartTime.Add(e.Result.Audio.Duration) + "", e.Result.Confidence, json);
 
+
+            //implementar confiança 4 niveis
             if (e.Result.Confidence > 0.5)
+
                 mmic.Send(exNot);
             else
                 tts.Speak("Desculpe não percebi, pode voltar repetir doutra forma, obrigado.");

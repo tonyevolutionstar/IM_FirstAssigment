@@ -62,14 +62,16 @@ namespace AppGui
 
         Socket vlcRcSocket;
         private object tts;
+        string dir_music = "file:///C:/Users/tonya/OneDrive/Ambiente de Trabalho/mestrado/IM/IM_FirstAssigment/AppGui/Testplaylist.xspf";
 
 
         public MainWindow()
         {
+
             InitializeComponent();
             //início da comunicação com o VLC
 
-            IPEndPoint socketAddress = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 62300);
+            IPEndPoint socketAddress = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 43522);
             var vlcServerProcess = System.Diagnostics.Process.Start(@"C:\Program Files (x86)\VideoLAN\VLC\vlc.exe", "-I rc --rc-host " + socketAddress.ToString());
 
             try
@@ -80,8 +82,7 @@ namespace AppGui
                 Task listener = System.Threading.Tasks.Task.Factory.StartNew(() => Receive(vlcRcSocket));
 
                 Console.WriteLine("Connected. Enter VLC commands.");
-                //Send(vlcRcSocket, "enqueue file:///C:/Users/tonya/Music/Linkin Park - Numb.mp3");
-                Send(vlcRcSocket, "enqueue file:///C:/Users/tonya/OneDrive/Ambiente de Trabalho/mestrado/IM/IM_FirstAssigment/AppGui/Testplaylist.xspf");
+                //Send(vlcRcSocket, "enqueue file:///C:/Users/tonya/OneDrive/Ambiente de Trabalho/mestrado/IM/IM_FirstAssigment/AppGui/Testplaylist.xspf");
             }
             finally
             {
@@ -120,8 +121,9 @@ namespace AppGui
                 switch ((string)json.recognized[0].ToString())
                 {
                     case "PLAY":
+                        Send(vlcRcSocket, "enqueue " + dir_music);
                         Send_Tts("A música vai começar. Bom aproveito");
-                        Task.Delay(20000);
+                        //Task.Delay(20000);
                         Send(vlcRcSocket, "play volume 50.0");
                         n = 1;
                         break;
@@ -135,7 +137,7 @@ namespace AppGui
                             if (n % 2 == 0 && n != 0)
                             {
                                 Send_Tts("A música vai continuar.");
-                                Task.Delay(15000);
+                                //Task.Delay(15000);
                                 Send(vlcRcSocket, "pause");
                                 ++n;
                             }
@@ -316,10 +318,8 @@ namespace AppGui
                         }
                         break;
                     case "QUIT":
-                        Send(vlcRcSocket, "quit");
-                        Send(vlcRcSocket, "logout");
+                        Send(vlcRcSocket, "quit " + dir_music);
                         Send_Tts("Espero que tenhas gostado de ouvir a música. Até à próxima");
-                        vlcRcSocket.Close();
                         break;
                 }
             });

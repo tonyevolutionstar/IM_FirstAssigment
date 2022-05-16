@@ -21,7 +21,7 @@
 			<item>Cone,estou a ouvir mal, podes aumentar volume<item repeat="0-1">por favor</item><tag>out="VOLUP"</tag></item>
 			<item>Cone,estou a ouvir mal, podes diminuir volume<item repeat="0-1">por favor</item><tag>out="VOLDOWN"</tag></item>
 			<item>Cone,podes por a música mais rápido<item repeat="0-1">por favor</item><tag>out="FAST"</tag></item>
-			<item>Cone,podes por a musica mais lenta<item repeat="0-1">por favor</item><tag>out="SLOW"</tag></item>
+			<item>Cone,podes por a música mais lenta<item repeat="0-1">por favor</item><tag>out="SLOW"</tag></item>
 			<item>Cone,podes retormar a velocidade<item repeat="0-1">por favor</item><tag>out="VNORMAL"</tag></item>
 			
 			<item>Cone,podes voltar repetir a música<item repeat="0-1">por favor</item><tag>out="REPEATON"</tag></item> 
