@@ -91,12 +91,25 @@ namespace speechModality
             var exNot = lce.ExtensionNotification(e.Result.Audio.StartTime + "", e.Result.Audio.StartTime.Add(e.Result.Audio.Duration) + "", e.Result.Confidence, json);
 
 
-            //implementar confiança 4 niveis
-            if (e.Result.Confidence > 0.5)
-
+            
+            if (e.Result.Confidence >= 0.0 && e.Result.Confidence < 0.25) 
+            { 
+                tts.Speak("Desculpe percebi mal, pode voltar repetir doutra forma, obrigado");
+              
+            }
+            else if (e.Result.Confidence >= 0.25 && e.Result.Confidence < 0.5)
+            {
+                tts.Speak("Desculpe não percebi, pode voltar repetir o comando, se faz favor");
+            }
+            else if (e.Result.Confidence >= 0.5 && e.Result.Confidence < 0.7)
+            {
+                tts.Speak("Desculpe pode voltar repetir o comando, se faz favor");
+               
+            }
+            else if (e.Result.Confidence >= 0.7)
                 mmic.Send(exNot);
-            else
-                tts.Speak("Desculpe não percebi, pode voltar repetir doutra forma, obrigado.");
+      
+
         }
 
 
@@ -117,6 +130,8 @@ namespace speechModality
 
             tts.Speak(com);
         }
+
+
 
         private void file_dir()
         {

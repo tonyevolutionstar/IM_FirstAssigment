@@ -71,7 +71,7 @@ namespace AppGui
             InitializeComponent();
             //início da comunicação com o VLC
 
-            IPEndPoint socketAddress = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 43522);
+            IPEndPoint socketAddress = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 43525);
             var vlcServerProcess = System.Diagnostics.Process.Start(@"C:\Program Files (x86)\VideoLAN\VLC\vlc.exe", "-I rc --rc-host " + socketAddress.ToString());
 
             try
@@ -82,7 +82,6 @@ namespace AppGui
                 Task listener = System.Threading.Tasks.Task.Factory.StartNew(() => Receive(vlcRcSocket));
 
                 Console.WriteLine("Connected. Enter VLC commands.");
-                //Send(vlcRcSocket, "enqueue file:///C:/Users/tonya/OneDrive/Ambiente de Trabalho/mestrado/IM/IM_FirstAssigment/AppGui/Testplaylist.xspf");
             }
             finally
             {
@@ -115,7 +114,7 @@ namespace AppGui
             var com = doc.Descendants("command").FirstOrDefault().Value;
             dynamic json = JsonConvert.DeserializeObject(com);
             string e_message_music = "Primeiro tens de abrir a música.";
-
+           
             App.Current.Dispatcher.Invoke(() =>
             {
                 switch ((string)json.recognized[0].ToString())
@@ -190,7 +189,7 @@ namespace AppGui
                         else
                         {                 
                             Send(vlcRcSocket, "volup 10.0");
-                            Send_Tts("Aumentei o volume");
+                           
                         }
                         break;
                     case "VOLDOWN":
@@ -201,7 +200,7 @@ namespace AppGui
                         else
                         {
                             Send(vlcRcSocket, "voldown 10.0");
-                            Send_Tts("Diminui o volume");
+                  
                         }
                         break;
                     case "FAST":
@@ -260,18 +259,7 @@ namespace AppGui
                             Send_Tts("Desativei o modo de repetição para esta música");
                         }
                         break;
-                    case "LOOP": //implement
-                        if (n == 0)
-                        {
-                            Send_Tts(e_message_music);
-                        }
-                        else
-                        {
-                            Send(vlcRcSocket, "loop on");
-                            Send_Tts("A repetição contínua das músicas foi ativada. Para cancealar diz Cone,podes desativar a repetição continua.");
-                        }
-                        break;
-
+                   
                     case "MUTE":
                         if (n == 0)
                         {
@@ -291,7 +279,7 @@ namespace AppGui
                         else
                         {
                             Send(vlcRcSocket, "volume 10.0");
-                            Send_Tts("A música agora está com volume de 50%");
+                            Send_Tts("A música está agora com som, se tiver muito alto ou muito baixo altere com os comandos de aumentar ou diminuir o som, obrigado");
                         }
             
                         break;
@@ -316,6 +304,50 @@ namespace AppGui
                             Send(vlcRcSocket, "random off");
                             Send_Tts("A playlist deixou de ser tocada aleatóriamente");
                         }
+                        break;
+                    case "MUSIC_NAME": 
+                        if (n == 0)
+                        {
+                            Send_Tts(e_message_music);
+                        }
+                        else
+                        {
+
+                            Send(vlcRcSocket, "get_title");
+                            byte[] b3 = new byte[100];
+                            int k3 = vlcRcSocket.Receive(b3);
+                            string szReceived = Encoding.UTF8.GetString(b3, 0, k3);
+
+                            Send_Tts("O nome desta música é " + szReceived);
+                        }
+                        
+                        break;
+                    case "TIME_MUSIC":
+                        if (n == 0)
+                        {
+                            Send_Tts(e_message_music);
+                        }
+                        else
+                        {
+       
+
+                            Send(vlcRcSocket, "get_length");
+                            byte[] b2 = new byte[100];
+                            int k2 = vlcRcSocket.Receive(b2);
+                            String length = Encoding.ASCII.GetString(b2, 0, k2);
+
+                            Console.WriteLine(length);
+                            int seconds = int.Parse(length);
+
+                            
+                            TimeSpan t = TimeSpan.FromSeconds(seconds);
+                            
+                            Send_Tts("A música tem " + t.Hours + " horas " + t.Minutes + " minutos " + t.Seconds + " segundos");
+ 
+                        }
+                        break;
+                    case "LEAPTIME":
+                        Send(vlcRcSocket, "get_time");
                         break;
                     case "QUIT":
                         Send(vlcRcSocket, "quit " + dir_music);
