@@ -312,7 +312,6 @@ namespace AppGui
                         }
                         else
                         {
-
                             Send(vlcRcSocket, "get_title");
                             byte[] b3 = new byte[100];
                             int k3 = vlcRcSocket.Receive(b3);
@@ -329,8 +328,6 @@ namespace AppGui
                         }
                         else
                         {
-       
-
                             Send(vlcRcSocket, "get_length");
                             byte[] b2 = new byte[100];
                             int k2 = vlcRcSocket.Receive(b2);
@@ -338,19 +335,15 @@ namespace AppGui
 
                             Console.WriteLine(length);
                             int seconds = int.Parse(length);
-
-                            
-                            TimeSpan t = TimeSpan.FromSeconds(seconds);
-                            
+                            TimeSpan t = TimeSpan.FromSeconds(seconds);                       
                             Send_Tts("A música tem " + t.Hours + " horas " + t.Minutes + " minutos " + t.Seconds + " segundos");
- 
                         }
                         break;
                     case "LEAPTIME":
                         Send(vlcRcSocket, "get_time");
                         break;
                     case "QUIT":
-                        Send(vlcRcSocket, "quit " + dir_music);
+                        Send(vlcRcSocket, "quit");
                         Send_Tts("Espero que tenhas gostado de ouvir a música. Até à próxima");
                         break;
                 }

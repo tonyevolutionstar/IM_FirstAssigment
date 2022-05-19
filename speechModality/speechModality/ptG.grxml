@@ -4,9 +4,7 @@
 	  <item>
 		  <item>
 			<ruleref uri="#object"/>
-			<tag>out.shape=rules.latest();</tag>
-			  
-			  
+			<tag>out.shape=rules.latest();</tag> 
 		  </item>
 	  </item>
 	</rule>
@@ -29,10 +27,9 @@
 			<item>Cone,podes retornar o som<item repeat="0-1">por favor</item><tag>out="SPEAK"</tag></item>
 			<item>Cone,podes tocar músicas aleatórias<item repeat="0-1">por favor</item><tag>out="RANDOM"</tag></item>
 			<item>Cone,podes cancelar músicas aletórias<item repeat="0-1">por favor</item><tag>out="RANDOMOFF"</tag></item>
-			
 			<item>Cone,quero saber o nome da música<item repeat="0-1">por favor</item><tag>out="MUSIC_NAME"</tag></item>
-			
 			<item>Cone,qual é a duração da música<item repeat="0-1">por favor</item><tag>out="TIME_MUSIC"</tag></item>
+			
 			<item>Cone,podes fechar a aplicação<item repeat="0-1">por favor</item><tag>out="QUIT"</tag></item>	
 			
 		</one-of>
