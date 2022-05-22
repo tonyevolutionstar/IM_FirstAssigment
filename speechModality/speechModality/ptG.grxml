@@ -43,7 +43,7 @@
 						<item>
 							<one-of>
 								<item>
-									<item repeat="0-1"> a </item> palylist <item repeat="0-1">por favor</item><tag>out="PLAY"</tag>
+									<item repeat="0-1"> a </item> playlist <item repeat="0-1">por favor</item><tag>out="PLAY"</tag>
 								</item>
 								<!-- iniciar/começar playlist-->
 								<item>
