@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<playlist xmlns="http://xspf.org/ns/0/" xmlns:vlc="http://www.videolan.org/vlc/playlist/ns/0/" version="1">
+	<title>Lista de reprodução</title>
+	<trackList>
+		<track>
+		<location>file:///C:/Users/joao_/Desktop/Mestrado/IM/IM_FirstAssigment/music/Capitao%20Fausto%20-%20Boa%20Memoria.mp3</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>0</vlc:id>
+				<vlc:option>file-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+		<location>file:///C:/Users/joao_/Desktop/Mestrado/IM/IM_FirstAssigment/music/Capitao%20Fausto-Amanha%20Tou%20Melhor.mp3</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>1</vlc:id>
+				<vlc:option>file-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+		<location>file:///C:/Users/joao_/Desktop/Mestrado/IM/IM_FirstAssigment/music/Papillon-Coisa%20Leve.mp3</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>2</vlc:id>
+				<vlc:option>file-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+		<location>file:///C:/Users/joao_/Desktop/Mestrado/IM/IM_FirstAssigment/music/Quim%20Barreiros-O%20melhor%20dia%20para%20casar.mp3</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>3</vlc:id>
+				<vlc:option>file-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+		<location>file:///C:/Users/joao_/Desktop/Mestrado/IM/IM_FirstAssigment/music/Tony%20Carreira-Sonhador.mp3</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>4</vlc:id>
+				<vlc:option>file-caching=1000</vlc:option>
+			</extension>
+		</track>
+	</trackList>
+<extension application="http://www.videolan.org/vlc/playlist/0">
+		<vlc:item tid="0"/>
+		<vlc:item tid="1"/>
+		<vlc:item tid="2"/>
+		<vlc:item tid="3"/>
+		<vlc:item tid="4"/>
+</extension>
+</playlist>

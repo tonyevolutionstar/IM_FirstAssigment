@@ -1,0 +1,15 @@
+<grammar xml:lang = "pt-PT" version = "1.0" xmlns = "http://www.w3.org/2001/06/grammar" tag-format = "semantics/1.0" >
+<rule id = "music" scope="public"> 
+<item>
+<one-of>
+<item>coloca esta música<tag> out.action = "MUSIC_SELECTED";</tag></item>
+<item>poe a música<tag> out.action = "MUSIC_SELECTED";</tag></item>
+</one-of>
+</item>
+<item>
+<one-of>
+<item>Amanha Tou Melhor<item repeat='0-1'>Capitao Fausto</item><tag>out.action2='1'</tag> </item>
+<item>Coisa Leve<item repeat='0-1'>Papillon</item><tag>out.action2='2'</tag> </item>
+<item>O melhor dia para casar<item repeat='0-1'>Quim Barreiros</item><tag>out.action2='3'</tag> </item>
+<item>Sonhador<item repeat='0-1'>Tony Carreira</item><tag>out.action2='4'</tag> </item>
+</one-of></item></rule></grammar>
