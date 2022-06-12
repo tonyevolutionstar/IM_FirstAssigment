@@ -1,0 +1,38 @@
+<!--This XML file contains the gestures of the database.-->
+<Gestures>
+  <Gesture>
+    <ID>0</ID>
+    <NAME>aumentar_Right</NAME>
+    <SEMANTIC>aumentarR</SEMANTIC>
+  </Gesture>
+  <Gesture>
+    <ID>1</ID>
+    <NAME>low_Right</NAME>
+    <SEMANTIC>lowR</SEMANTIC>
+  </Gesture>
+  <Gesture>
+    <ID>2</ID>
+    <NAME>mute</NAME>
+    <SEMANTIC>mute</SEMANTIC>
+  </Gesture>
+  <Gesture>
+    <ID>3</ID>
+    <NAME>next_music_Right</NAME>
+    <SEMANTIC>nextmusicR</SEMANTIC>
+  </Gesture>
+  <Gesture>
+    <ID>4</ID>
+    <NAME>previous_music_Left</NAME>
+    <SEMANTIC>previousmusicL</SEMANTIC>
+  </Gesture>
+  <Gesture>
+    <ID>5</ID>
+    <NAME>random_music</NAME>
+    <SEMANTIC>randommusic</SEMANTIC>
+  </Gesture>
+  <Gesture>
+    <ID>6</ID>
+    <NAME>vol_up_Right</NAME>
+    <SEMANTIC>volupR</SEMANTIC>
+  </Gesture>
+</Gestures>

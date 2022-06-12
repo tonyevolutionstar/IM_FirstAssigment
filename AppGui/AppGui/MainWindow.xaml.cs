@@ -117,154 +117,155 @@ namespace AppGui
 
             App.Current.Dispatcher.Invoke(() =>
             {
-            switch ((string)json.recognized[0].ToString())
-            {
-                case "PLAY":
-                    Console.WriteLine(dir_music);
-                    Send(vlcRcSocket, "enqueue " + dir_music);
-                    Send_Tts("Iniciar música");
-                    //Task.Delay(20000);
-                    Send(vlcRcSocket, "play volume 50.0");
-                    n = 1;
-                    break;
-                case "PAUSE":
-                    if (n == 0)
-                    {
-                        Send_Tts(e_message_music);
-                    }
-                    else
-                    {
-                        if (n % 2 == 0 && n != 0)
+                switch ((string)json.recognized[0].ToString())
+                {
+                    case "PLAY":
+                        Console.WriteLine(dir_music);
+                        Send(vlcRcSocket, "enqueue " + dir_music);
+                        Send_Tts("Iniciar música");
+                        //Task.Delay(20000);
+                        Send(vlcRcSocket, "play volume 50.0");
+                        n = 1;
+                        break;
+                    case "PAUSE":
+                        if (n == 0)
                         {
-                            Send_Tts("A continuar");
-                            //Task.Delay(15000);
-                            Send(vlcRcSocket, "pause");
-                            ++n;
+                            Send_Tts(e_message_music);
                         }
                         else
                         {
-                            Send(vlcRcSocket, "pause");
-                            Send_Tts("Em pausa");
-                            ++n;
+                            if (n % 2 == 0 && n != 0)
+                            {
+                                Send_Tts("A continuar");
+                                //Task.Delay(15000);
+                                Send(vlcRcSocket, "pause");
+                                ++n;
+                            }
+                            else
+                            {
+                                Send(vlcRcSocket, "pause");
+                                Send_Tts("Em pausa");
+                                ++n;
+                            }
                         }
-                    }
-                    break;
-                case "RESUME":
-                    if (n == 0)
-                    {
-                        Send_Tts(e_message_music);
-                    }
-                    else
-                    {
-                        Send(vlcRcSocket, "play");
-                        Send_Tts("A música recomeçou");
-                    }
-                    break;
-                case "NEXT":
-                    if (n == 0)
-                    {
-                        Send_Tts(e_message_music);
-                    }
-                    else
-                    {
-                        Send(vlcRcSocket, "next");
-                        Send_Tts("Música seguinte");
-                    }
-                    break;
-                case "PREV":
-                    if (n == 0)
-                    {
-                        Send_Tts(e_message_music);
-                    }
-                    else
-                    {
-                        Send(vlcRcSocket, "prev");
-                        Send_Tts("Música anterior");
-                    }
-                    break;
-                case "VOLUP":
-             
-                    Send(vlcRcSocket, "volup 10.0");
-                    break;
-                case "VOLDOWN":
-                    Send(vlcRcSocket, "voldown 10.0");
-                    break;
-                case "FAST":
-                    Send(vlcRcSocket, "faster");
+                        break;
+                    case "RESUME":
+                        if (n == 0)
+                        {
+                            Send_Tts(e_message_music);
+                        }
+                        else
+                        {
+                            Send(vlcRcSocket, "play");
+                            Send_Tts("A música recomeçou");
+                        }
+                        break;
+                    case "NEXT":
+                        if (n == 0)
+                        {
+                            Send_Tts(e_message_music);
+                        }
+                        else
+                        {
+                            Send(vlcRcSocket, "next");
+                            Send_Tts("Música seguinte");
+                        }
+                        break;
+                    case "PREV":
+                        if (n == 0)
+                        {
+                            Send_Tts(e_message_music);
+                        }
+                        else
+                        {
+                            Send(vlcRcSocket, "prev");
+                            Send_Tts("Música anterior");
+                        }
+                        break;
+                    case "VOLUP":
+
+                        Send(vlcRcSocket, "volup 10.0");
+                        break;
+                    case "VOLDOWN":
+                        Send(vlcRcSocket, "voldown 10.0");
+                        break;
+                    case "FAST":
+                        Send(vlcRcSocket, "faster");
                         Send_Tts("Velocidade rápida");
                         break;
-                case "SLOW":
-            
+                    case "SLOW":
+
                         Send(vlcRcSocket, "slower");
                         Send_Tts("Velocidade lenta");
 
                         break;
-                case "VNORMAL":
-                    if (n == 0)
-                    {
-                        Send_Tts(e_message_music);
-                    }
-                    else
-                    {
-                        Send(vlcRcSocket, "normal");
-                        Send_Tts("Velocidade normal");
-                    }
-                    break;
-                case "REPEATON":
+                    case "VNORMAL":
+                        if (n == 0)
+                        {
+                            Send_Tts(e_message_music);
+                        }
+                        else
+                        {
+                            Send(vlcRcSocket, "normal");
+                            Send_Tts("Velocidade normal");
+                        }
+                        break;
+                    case "REPEATON":
 
                         Send(vlcRcSocket, "repeat on");
                         Send_Tts("Repetir música");
-                    
 
-                    break;
-                case "REPEATOFF":
+
+                        break;
+                    case "REPEATOFF":
                         Send(vlcRcSocket, "repeat off");
                         Send_Tts("Repetição cancelada");
-                    
-                    break;
 
-                case "MUTE":
+                        break;
+
+                    case "MUTE":
 
                         Send(vlcRcSocket, "volume 0");
-                    
-                    break;
-                case "SPEAK":
-                    if (n == 0)
-                    {
-                        Send_Tts(e_message_music);
-                    }
-                    else
-                    {
-                        Send(vlcRcSocket, "volume 100.0");
-                        Send_Tts("Som ativado");
-                    }
 
-                    break;
-                case "RANDOM":
-         
+                        break;
+                    case "SPEAK":
+                        if (n == 0)
+                        {
+                            Send_Tts(e_message_music);
+                        }
+                        else
+                        {
+                            Send(vlcRcSocket, "volume 100.0");
+                            Send_Tts("Som ativado");
+                        }
+
+                        break;
+                    case "RANDOM":
+
                         Send(vlcRcSocket, "random on");
                         Send_Tts("Modo aleatório ativo");
-                    
-                    break;
-                case "RANDOMOFF":
+
+                        break;
+                    case "RANDOMOFF":
                         Send(vlcRcSocket, "random off");
                         Send_Tts("Modo aleatório inativo");
-                    break;
-                case "MUSIC_NAME":
+                        break;
+                    case "MUSIC_NAME":
                         Send(vlcRcSocket, "get_title");
                         byte[] b3 = new byte[100];
                         int k3 = vlcRcSocket.Receive(b3);
                         string szReceived = Encoding.UTF8.GetString(b3, 0, k3);
-                        while (szReceived.StartsWith("status change:")) {
-                                Send(vlcRcSocket, "get_title");
-                                b3 = new byte[100];
-                                k3 = vlcRcSocket.Receive(b3);
-                                szReceived = Encoding.UTF8.GetString(b3, 0, k3);
-                            }
-                        Send_Tts("O nome desta música é " + szReceived.Replace(".mp3",""));
+                        while (szReceived.StartsWith("status change:"))
+                        {
+                            Send(vlcRcSocket, "get_title");
+                            b3 = new byte[100];
+                            k3 = vlcRcSocket.Receive(b3);
+                            szReceived = Encoding.UTF8.GetString(b3, 0, k3);
+                        }
+                        Send_Tts("O nome desta música é " + szReceived.Replace(".mp3", ""));
 
-                    break;
-                case "TIME_MUSIC":
+                        break;
+                    case "TIME_MUSIC":
 
 
                         Send(vlcRcSocket, "get_length");
@@ -277,7 +278,7 @@ namespace AppGui
 
 
                         TimeSpan t = TimeSpan.FromSeconds(seconds);
-                            string value = "A música tem ";
+                        string value = "A música tem ";
                         if (t.Hours != 0)
                         {
                             value += t.Hours + " horas ";
@@ -292,21 +293,21 @@ namespace AppGui
                         }
 
 
-                         Send_Tts(value);
+                        Send_Tts(value);
 
-                    break;
-                case "MUSIC_SELECTED":
-                        
+                        break;
+                    case "MUSIC_SELECTED":
+
                         string command = "goto " + (string)json.recognized[1].ToString();
                         Send(vlcRcSocket, command);
 
                         string to_speech = "Musica mudada";
 
                         Send(vlcRcSocket, "volume 10.0");
-                        Send_Tts( to_speech);
+                        Send_Tts(to_speech);
 
                         Send(vlcRcSocket, "volume 200.0");
-                 
+
 
 
                         break;
