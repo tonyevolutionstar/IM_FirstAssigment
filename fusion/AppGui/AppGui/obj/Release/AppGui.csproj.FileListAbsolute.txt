@@ -1,0 +1,17 @@
+C:\DEMO_FRAMEWORK_FUSION_MAY2018\CompleteExampleWithFusion\AppGui\AppGui\obj\Release\AppGui.csprojResolveAssemblyReference.cache
+C:\DEMO_FRAMEWORK_FUSION_MAY2018\CompleteExampleWithFusion\AppGui\AppGui\obj\Release\MainWindow.g.cs
+C:\DEMO_FRAMEWORK_FUSION_MAY2018\CompleteExampleWithFusion\AppGui\AppGui\obj\Release\App.g.cs
+C:\DEMO_FRAMEWORK_FUSION_MAY2018\CompleteExampleWithFusion\AppGui\AppGui\obj\Release\AppGui_MarkupCompile.cache
+C:\DEMO_FRAMEWORK_FUSION_MAY2018\CompleteExampleWithFusion\AppGui\AppGui\obj\Release\AppGui_MarkupCompile.lref
+C:\DEMO_FRAMEWORK_FUSION_MAY2018\CompleteExampleWithFusion\AppGui\AppGui\bin\Release\AppGui.exe.config
+C:\DEMO_FRAMEWORK_FUSION_MAY2018\CompleteExampleWithFusion\AppGui\AppGui\bin\Release\AppGui.exe
+C:\DEMO_FRAMEWORK_FUSION_MAY2018\CompleteExampleWithFusion\AppGui\AppGui\bin\Release\AppGui.pdb
+C:\DEMO_FRAMEWORK_FUSION_MAY2018\CompleteExampleWithFusion\AppGui\AppGui\bin\Release\Newtonsoft.Json.dll
+C:\DEMO_FRAMEWORK_FUSION_MAY2018\CompleteExampleWithFusion\AppGui\AppGui\bin\Release\Newtonsoft.Json.xml
+C:\DEMO_FRAMEWORK_FUSION_MAY2018\CompleteExampleWithFusion\AppGui\AppGui\obj\Release\MainWindow.baml
+C:\DEMO_FRAMEWORK_FUSION_MAY2018\CompleteExampleWithFusion\AppGui\AppGui\obj\Release\AppGui.g.resources
+C:\DEMO_FRAMEWORK_FUSION_MAY2018\CompleteExampleWithFusion\AppGui\AppGui\obj\Release\AppGui.Properties.Resources.resources
+C:\DEMO_FRAMEWORK_FUSION_MAY2018\CompleteExampleWithFusion\AppGui\AppGui\obj\Release\AppGui.csproj.GenerateResource.Cache
+C:\DEMO_FRAMEWORK_FUSION_MAY2018\CompleteExampleWithFusion\AppGui\AppGui\obj\Release\AppGui.csproj.CoreCompileInputs.cache
+C:\DEMO_FRAMEWORK_FUSION_MAY2018\CompleteExampleWithFusion\AppGui\AppGui\obj\Release\AppGui.exe
+C:\DEMO_FRAMEWORK_FUSION_MAY2018\CompleteExampleWithFusion\AppGui\AppGui\obj\Release\AppGui.pdb

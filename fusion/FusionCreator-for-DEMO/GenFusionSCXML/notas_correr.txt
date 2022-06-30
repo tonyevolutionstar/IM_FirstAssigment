@@ -1,0 +1,14 @@
+speech - colocar nome das rules e um timeout - nossa
+secondMod(gestos) - comandos fusão - nossa 
+definir output - output- modaliteies - src
+gerar a fusao - genFunsionSCXML
+
+eventslist - eventos processados pela fusao - fusionEngine
+
+
+
+Pensar no que completar
+Definir os enumorados
+
+Redundacy e Complementary 
+Não mudar o código do AppGui, mexer na fusion 

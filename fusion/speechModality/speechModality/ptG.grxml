@@ -1,0 +1,534 @@
+﻿<?xml version="1.0"?>
+<grammar xml:lang="pt-PT" version="1.0" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+	<rule id="rootRule" scope="public">
+		<one-of>
+			<item>
+				<ruleref uri="#object"/>
+				<tag>out.action=rules.object;</tag>
+			</item>
+			<item>
+				<ruleref uri="#musicx"/>
+				<tag>out.action=rules.music;</tag>
+			</item>
+			<item>
+				<ruleref uri="#more"/>
+				<tag>out.action=rules.more;</tag>
+			</item>
+			<item>
+				<ruleref uri="#velocity"/>
+				<tag>out.action=rules.velocity;</tag>
+			</item>
+			<item>
+				<ruleref uri="#change_music"/>
+				<tag>out.action=rules.change_music;</tag>
+			</item>
+			<item>
+				<ruleref uri="#answer"/>
+				<tag>out.action=rules.answer;</tag>
+			</item>
+            <item>
+				<ruleref uri="#fullnumber"/>
+				<tag> out.action = rules.fullnumber;</tag>
+			</item>
+		</one-of>
+	</rule>
+	<rule id="object">
+		<one-of>
+			<item>
+				<item repeat="0-1">podes </item>
+				<one-of>
+
+					<item>
+						<one-of>
+							<item>iniciar </item>
+							<item>começar </item>
+						</one-of>
+						<item>
+							<one-of>
+								<item>
+									<item repeat="0-1"> a </item> playlist <item repeat="0-1">por favor</item><tag>out="PLAY"</tag>
+								</item>
+								<!-- iniciar/começar playlist-->
+								<item>
+									<item repeat="0-1"> a </item> musica <item repeat="0-1">por favor</item><tag>out="PLAY"</tag>
+								</item>
+								<!-- iniciar/começar musica-->
+							</one-of>
+						</item>
+					</item>
+
+					<item>
+						<item>
+							<one-of>
+								<item>
+									mudar <item repeat="0-1"> a musica </item> para a
+								</item>
+								<item>
+									trocar <item repeat="0-1"> a musica </item> para a
+								</item>
+								<item>
+									alterar <item repeat="0-1"> a musica </item> para a
+								</item>
+							</one-of>
+						</item>
+						<one-of>
+							<item>
+								seguinte <item repeat="0-1"> por favor </item> <tag>out="NEXT"</tag>
+							</item>
+							<!-- podes mudar/trocar/alterar (a musica para a / para a) seguinte-->
+							<item>
+								proxima <item repeat="0-1"> por favor </item> <tag>out="NEXT"</tag>
+							</item>
+							<!-- podes mudar/trocar/alterar (a musica para a / para a) proxima-->
+							<item>
+								anterior <item repeat="0-1"> por favor </item> <tag>out="PREV"</tag>
+							</item>
+							<!-- podes mudar/trocar/alterar (a musica para a / para a) anterior-->
+						</one-of>
+					</item>
+
+					<item>
+						<one-of>
+							<item> pausar </item>
+							<item>
+								pausa <tag>out="PAUSE"</tag>
+							</item>
+						</one-of>
+						<item repeat="0-1">
+							<item repeat="0-1"> a </item> musica <tag>out="PAUSE"</tag>
+						</item>
+						<!-- podes pausar/pausa a musica -->
+
+					</item>
+
+					<item>
+						<one-of>
+							<item> continuar </item>
+							<item> continua </item>
+						</one-of>
+						<item repeat="0-1">
+							<item repeat="0-1"> a </item> musica <tag>out="RESUME"</tag>             <!-- podes continuar/continua a musica -->
+						</item>
+					</item>
+
+					<item>
+						<item>
+							<one-of>
+								<item> aumentar </item>
+								<item> subir </item>
+							</one-of>
+						</item>
+						<one-of>
+							<item>
+								<item repeat="0-1"> o </item> volume <item repeat="0-1"> por favor </item> <tag>out="VOLUP"</tag>
+							</item>
+							<!-- podes aumenter/subir o volume-->
+							<item>
+								<item repeat="0-1"> o </item> som <item repeat="0-1"> por favor </item> <tag>out="VOLUP"</tag>
+							</item>
+							<!-- podes aumenter/subir o som-->
+							<item>
+								<item repeat="0-1"> a </item> velocidade <item repeat="0-1"> por favor </item> <tag>out="FAST"</tag>
+							</item>
+							<!-- podes aumenter/subir a velocidade -->
+						</one-of>
+					</item>
+
+					<item>
+						<item>
+							<one-of>
+								<item> reduzir </item>
+								<item> diminuir </item>
+								<item> descer </item>
+								<item> baixar </item>
+							</one-of>
+						</item>
+						<one-of>
+							<item>
+								<item repeat="0-1"> o </item> volume <item repeat="0-1"> por favor </item> <tag>out="VOLDOWN"</tag>
+							</item>
+							<!-- podes reduzir\diminuir\descer o volume -->
+							<item>
+								<item repeat="0-1"> o </item> som <item repeat="0-1"> por favor </item> <tag>out="VOLDOWN"</tag>
+							</item>
+							<!-- podes reduzir\diminuir\descer o som -->
+							<item>
+								<item repeat="0-1"> a </item> velocidade <item repeat="0-1"> por favor </item> <tag>out="SLOW"</tag>
+							</item>
+							<!-- podes reduzir\diminuir\descer a velocidade -->
+						</one-of>
+					</item>
+
+					<item>
+						proxima musica <item repeat="0-1">por favor</item><tag>out="NEXT"</tag>
+					</item>
+					<!-- proxima musica -->
+
+					<item>
+						<item>
+							<one-of>
+								<item> colocar </item>
+								<item> por </item>
+							</one-of>
+						</item>
+						<item>
+							
+							<one-of>
+								<item>
+
+									<ruleref uri="#change_music">
+										<!-- <tag>out.object =  rules.change_music;</tag> -->
+									</ruleref>
+									<!-- podes colocar\por a musica segunte\anterior -->
+								</item>
+								<item>
+									<ruleref uri="#more">
+										<!--	<tag>out = out + rules.more;</tag> -->
+									</ruleref>
+									<!-- podes colocar\por mais ... -->
+								</item>
+								<item>
+									<ruleref uri="#velocity">
+										<!--<tag> out= out + rules.velocity;</tag>-->
+									</ruleref>
+									<!-- podes colocar\por a velocidade ... -->
+								</item> 
+							</one-of>
+						</item>
+					</item>
+
+					<item>
+						repetir <item repeat="0-1"> a musica </item><tag>out="REPEATON"</tag>
+					</item>
+					<!-- repetir a musica -->
+					<item>
+						<one-of>
+							<item> nao </item>
+							<item> deixar de </item>
+							<item> desativar </item>
+						</one-of>
+						<item>
+							<item>
+								repetir <item repeat="0-1"> a musica </item><item repeat="0-1">por favor</item><tag>out="REPEATOFF"</tag>
+							</item>
+							<!-- nao/deixar de/ destivar repetir a musica -->
+							<item>
+								repetiçao <item repeat="0-1"> da musica </item> <item repeat="0-1">por favor</item><tag>out="REPEATOFF"</tag>
+							</item>
+							<!-- nao/deixar de/ destivar repetição da musica -->
+						</item>
+					</item>
+
+
+					<item>
+						<one-of>
+							<item> escolher </item>
+							<item> escolhe </item>
+						</one-of>
+						<item  repeat="0-1">
+							tu <item repeat="0-1"> a musica</item> <item repeat="0-1"> por favor </item> <tag>out="RANDOM"</tag>
+						</item>
+					</item>
+
+					<item>
+						<one-of>
+							<item> desativar </item>
+							<item> inativar </item>
+							<item> cancelar </item>
+						</one-of>
+						<item>
+							a musica aleatoria  <item repeat="0-1"> por favor </item> <tag>out="RANDOMOFF"</tag>
+						</item>
+					</item>
+
+					<item>
+						parar de escolher as musicas<item repeat="0-1">por favor</item><tag>out="RANDOMOFF"</tag>
+					</item>
+					<item>
+						desliga<item repeat="0-1">por favor </item><tag>out="QUIT"</tag>
+					</item>
+				</one-of>
+			</item>
+
+			<item>
+				<one-of>
+					<item>
+						silencio<item repeat="0-1">por favor</item><tag>out="MUTE"</tag>
+					</item>
+					<!-- silencio -->
+					<item>
+						sem som<item repeat="0-1">por favor</item><tag>out="MUTE"</tag>
+					</item>
+					<!-- sem som -->
+					<item>
+						xiiu<item repeat="0-1">por favor</item><tag>out="MUTE"</tag>
+					</item>
+					<!-- xiiu -->
+					<item>
+						cala te<item repeat="0-1">por favor</item><tag>out="MUTE"</tag>
+					</item>
+					<!-- cala te -->
+				</one-of>
+			</item>
+
+			<item>
+				<one-of>
+					<item>
+						retornar o som<item repeat="0-1">por favor</item><tag>out="SPEAK"</tag>
+					</item>
+					<item>
+						com som<item repeat="0-1">por favor</item><tag>out="SPEAK"</tag>
+					</item>
+					<item>
+						podes cantar<item repeat="0-1">por favor</item><tag>out="SPEAK"</tag>
+					</item>
+				</one-of>
+			</item>
+
+
+
+			<item>
+				<one-of>
+					<item>
+						como se chama esta musica<tag>out="MUSIC_NAME"</tag>
+					</item>
+					<item>
+						qual o nome <item repeat="0-1"> desta musica </item><tag>out="MUSIC_NAME"</tag>
+					</item>
+					<item>
+						nome <tag>out="MUSIC_NAME"</tag>
+					</item>
+				</one-of>
+			</item>
+
+			<item>
+				<one-of>
+					<item>
+						qual a duraçao da musica<tag>out="TIME_MUSIC"</tag>
+					</item>
+					<item>
+						quanto tempo tem  <item repeat="0-1"> a musica </item><tag>out="TIME_MUSIC"</tag>
+					</item>
+				</one-of>
+			</item>
+
+			<item>
+				<one-of>
+					<item>
+						xau<tag>out="QUIT"</tag>
+					</item>
+					<item>
+						desliga <item repeat="0-1">por favor </item><tag>out="QUIT"</tag>
+					</item>
+					<item>
+						vou embora<tag>out="QUIT"</tag>
+					</item>
+					<item>
+						fechar a aplicação<tag>out="QUIT"</tag>
+					</item>
+				</one-of>
+			</item>
+
+
+
+		</one-of>
+	</rule>
+
+	<rule id="more">
+		<item>
+			<item> mais </item>
+			<one-of>
+				<item>
+					rapido <item repeat="0-1">por favor</item><tag>out="FAST"</tag>
+				</item>
+				<!-- mais rapido -->
+				<item>
+					lento <item repeat="0-1">por favor</item><tag>out="SLOW"</tag>
+				</item>
+				<!-- mais lento -->
+				<item>
+					alto <item repeat="0-1">por favor</item><tag>out="VOLUP"</tag>
+				</item>
+				<!-- mais alto -->
+				<item>
+					baixo <item repeat="0-1">por favor</item><tag>out="VOLDOWN"</tag>
+				</item>
+				<!-- mais baixo -->
+				<item>
+					acelarado <item repeat="0-1">por favor</item><tag>out="FAST"</tag>
+				</item>
+				<!-- mais acelarado -->
+			</one-of>
+		</item>
+	</rule>
+
+	<rule id="velocity">
+		<item>
+			<item>
+				<item repeat="0-1"> a </item> velocidade
+			</item>
+			<one-of>
+				<item>
+					normal <item repeat="0-1"> por favor </item> <tag>out="VNORMAL"</tag>
+				</item>
+				<!-- a velocidade normal -->
+				<item>
+					rapida <item repeat="0-1"> por favor </item><tag>out="FAST"</tag>
+				</item>
+				<!-- a velocidade rapida -->
+				<item>
+					lenta <item repeat="0-1"> por favor </item><tag>out="SLOW"</tag>
+				</item>
+				<!-- a velocidade lenta -->
+			</one-of>
+		</item>
+	</rule>
+
+	<rule id="change_music">
+		<item>
+			<item>
+				<item repeat="0-1"> a </item> musica
+			</item>
+			<one-of>
+				<item>
+					seguinte <item repeat="0-1"> por favor </item> <tag>out="NEXT"</tag>
+				</item>
+				<!-- podes colocar\por a musica seguinte -->
+				<item>
+					anterior <item repeat="0-1"> por favor </item><tag>out="PREV"</tag>
+				</item>
+				<!-- podes colocar\por a musica anterior -->
+				<item>
+					aleatoria <item repeat="0-1"> por favor </item><tag>out="RANDOMON"</tag>
+				</item>
+				<!-- podes colocar\por a musica anterior -->
+			</one-of>
+		</item>
+	</rule>
+	
+	<rule id="answer">
+		<item>
+			<one-of>
+				<item>
+					Sim <item repeat="0-1"> por favor </item> <tag>out="YES"</tag>
+				</item>
+				<item>
+					Nao <item repeat="0-1"> por favor </item> <tag>out="NO"</tag>
+				</item>
+			</one-of>
+		</item>
+	</rule>
+
+	<rule id ="musicx">
+		<item>
+			<ruleref uri="Dynamic_Grammar.grxml#music"></ruleref>
+		</item>
+	</rule>
+
+
+
+	<rule id="fullnumber">
+		<one-of>
+			
+			<item>
+				<item > <ruleref uri="#G100_500"/></item>
+				<item repeat="0-1"> e </item>
+				<item > <ruleref uri="#G1_9"/></item>
+				<tag> out = rules.G100_500  + rules.G1_9</tag>
+			</item>
+			
+			<item>
+				<item > <ruleref uri="#G100_500"/></item>
+				<item repeat="0-1"> e </item>
+				<item > <ruleref uri="#G10_90"/></item>
+				<item repeat="0-1"> e </item>
+				<item > <ruleref uri="#G1_9"/></item>
+				<tag> out = rules.G100_500 + rules.G10_90  + rules.G1_9</tag>
+			</item>
+			<item>
+				<item ><ruleref uri="#G10_90"/></item>
+				<item repeat="0-1"> e </item>
+				<item ><ruleref uri="#G1_9"/></item>
+				<tag> out = rules.G10_90  + rules.G1_9</tag>
+			</item>
+
+            <item>
+				<item > <ruleref uri="#G100_500"/></item>
+				<item repeat="0-1"> e </item>
+				<item > <ruleref uri="#G11_19"/></item>
+				<tag> out = rules.G100_500 + rules.G11_19  </tag>
+			</item>
+			
+			<item>
+				<item ><ruleref uri="#G11_19"/></item>
+				<tag> out = rules.G11_19 </tag>
+			</item>
+
+			<item>
+				<item ><ruleref uri="#G10_90"/></item>
+				<tag> out = rules.G10_90 </tag>
+			</item>
+			
+			<item>
+				<item ><ruleref uri="#G1_9"/><tag> out = rules.G1_9</tag></item>
+			</item>
+
+		</one-of>
+	</rule>
+	
+		<rule id="G100_500">
+		<one-of>
+			<item>cem <tag> out =100</tag></item>
+			<item>cento <tag> out =100</tag></item>
+			<item>duzentos <tag> out =200</tag></item>
+			<item>trezentos <tag> out =300</tag></item>
+			<item>quatrocentos <tag> out =400</tag></item>
+			<item>quinhentos <tag> out =500</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="G11_19">
+		<one-of>
+			<item>onze <tag> out =11</tag></item>
+			<item>doze <tag> out =12</tag></item>
+			<item>treze <tag> out =13</tag></item>
+			<item>quatorze <tag> out =14</tag></item>
+			<item>quinze <tag> out =15</tag></item>
+			<item>dezasseis <tag> out =16</tag></item>
+			<item>dezassete <tag> out =17</tag></item>
+			<item>dezoito <tag> out =18</tag></item>
+			<item>dezanove <tag> out =19</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="G10_90">
+		<one-of>
+			<item>dez <tag> out =10</tag></item>
+			<item>vinte <tag> out =20</tag></item>
+			<item>trinta <tag> out =30</tag></item>
+			<item>quarenta <tag> out =40</tag></item>
+			<item>cinquenta <tag> out =50</tag></item>
+			<item>sessenta <tag> out =60</tag></item>
+			<item>setenta <tag> out =70</tag></item>
+			<item>oitenta <tag> out =80</tag></item>
+			<item>noventa <tag> out =90</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="G1_9">
+		<one-of>
+			<item>um<tag> out = 1</tag></item>
+			<item>dois <tag> out = 2</tag></item>
+			<item>tres <tag> out = 3</tag></item>
+			<item>quatro <tag> out = 4</tag></item>
+			<item>cinco <tag> out = 5</tag></item>
+			<item>seis <tag> out = 6</tag></item>
+			<item>sete <tag> out = 7</tag></item>
+			<item>oito <tag> out = 8</tag></item>
+			<item>nove <tag> out = 9</tag></item>
+			<item>zero <tag> out = 0</tag></item>
+		</one-of>
+	</rule>
+
+
+</grammar>

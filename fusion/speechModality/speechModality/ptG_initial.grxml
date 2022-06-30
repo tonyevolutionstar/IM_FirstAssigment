@@ -1,0 +1,65 @@
+﻿<?xml version="1.0"?>
+<grammar xml:lang="pt-PT" version="1.0" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+	<rule id="rootRule" scope="public">
+		<one-of>
+			<item><ruleref uri="#object"/><tag>out.action=rules.object;</tag> </item>
+			<item><ruleref uri="#music"/><tag>out.music=rules.music;</tag></item>
+		</one-of>
+	</rule>
+	<rule id="object">
+		<one-of>
+
+			<item>Iniciar playlist<item repeat="0-1">por favor</item><tag>out="PLAY"</tag></item>
+			
+			<item>
+				<one-of>
+					<item>
+						pausa a música<item repeat="0-1">por favor</item><tag>out="PAUSE"</tag>
+					</item>
+					<item>
+						pausa musica <item repeat="0-1">por favor</item><tag>out="PAUSE"</tag>
+					</item>
+				</one-of>
+			</item>
+			
+			<item>continuar<item repeat="0-1">por favor</item><tag>out="RESUME"</tag></item>
+			
+			<item>
+				<one-of>
+					<item>	
+						podes mudar a música para seguinte<item repeat="0-1">por favor</item><tag>out="NEXT"</tag>
+					</item>
+					<item>
+						proxima musica <item repeat="0-1">por favor</item><tag>out="NEXT"</tag>
+					</item>
+				</one-of>
+			</item>
+			<item>podes mudar a música para anterior<item repeat="0-1">por favor</item><tag>out="PREV"</tag></item>
+			<item>estou a ouvir mal, podes aumentar volume<item repeat="0-1">por favor</item><tag>out="VOLUP"</tag></item>
+			<item>estou a ouvir mal, podes diminuir volume<item repeat="0-1">por favor</item><tag>out="VOLDOWN"</tag></item>
+			<item>podes por a música mais rápido<item repeat="0-1">por favor</item><tag>out="FAST"</tag></item>
+			<item>podes por a música mais lenta<item repeat="0-1">por favor</item><tag>out="SLOW"</tag></item>
+			<item>podes retormar a velocidade<item repeat="0-1">por favor</item><tag>out="VNORMAL"</tag></item>
+			<item>podes voltar repetir a música<item repeat="0-1">por favor</item><tag>out="REPEATON"</tag></item> 
+			<item>já não quero voltar a ouvir esta música de novo<item repeat="0-1">por favor</item><tag>out="REPEATOFF"</tag></item>
+			<item>silêncio<item repeat="0-1">por favor</item><tag>out="MUTE"</tag></item>
+			<item>podes retornar o som<item repeat="0-1">por favor</item><tag>out="SPEAK"</tag></item>
+			<item>podes tocar músicas aleatórias<item repeat="0-1">por favor</item><tag>out="RANDOM"</tag></item>
+			<item>podes cancelar músicas aletórias<item repeat="0-1">por favor</item><tag>out="RANDOMOFF"</tag></item>
+			
+			<item>quero saber o nome da música<item repeat="0-1">por favor</item><tag>out="MUSIC_NAME"</tag></item>
+			
+			<item>qual é a duração da música<item repeat="0-1">por favor</item><tag>out="TIME_MUSIC"</tag></item>
+			<item>podes fechar a aplicação<item repeat="0-1">por favor</item><tag>out="QUIT"</tag></item>	
+			
+		</one-of>
+	</rule>
+	<rule id="music">
+		<item>
+			<one-of>
+				<item>coloca esta música<tag> out.action = "musica"; </tag></item>
+				<item>poe a música <tag> out.action = "musica"; </tag></item>
+			</one-of>
+		</item>
+		<item>
+			<one-of>
